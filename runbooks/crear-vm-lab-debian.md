@@ -30,13 +30,11 @@ virt-install \
   --graphics vnc
 ```
 Se abre una ventana de `virt-viewer` con el instalador de Debian en modo
-texto. Usar `--graphics vnc` (no `--graphics none`): con consola serie tuvimos
-un intento que se colgó sin poder diagnosticarlo por falta de visibilidad.
+texto. Usar `--graphics vnc` (no `--graphics none`): surgieron problemas con el modo
+ sin apartado visual, ocurrió que que se colgó sin poder diagnosticarlo por falta de visibilidad.
 
 ## Durante la instalación
-- Idioma del instalador: elegir **Spanish** desde el arranque si el país
-  (Argentina/Chile) no aparece en la lista de un instalador en inglés (evita
-  el error "no hay locale definido para esa combinación").
+- Idioma del instalador: a elección, pero considerar que si se instala en **English*, no aparecerá la configuración local estando en otro sitio
 - Contraseña de root: **vacía** (deja al usuario normal en el grupo `sudo`).
 - Particionado: guiado, usar todo el disco, todo en una partición.
 - Selección de software (`tasksel`): desmarcar todos los entornos de

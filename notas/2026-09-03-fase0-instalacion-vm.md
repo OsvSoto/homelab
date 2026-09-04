@@ -1,12 +1,12 @@
 # 2026-09-03 — Instalación VM lab-debian
 
-## Qué hice
+## Resumen 
 Instalé Debian 13 en una VM con KVM/libvirt (`lab-debian`): agregué mi usuario
 a los grupos `libvirt` y `kvm`, descargué la ISO netinst, y armé la VM con
 `virt-install`. El procedimiento completo queda documentado en
 `runbooks/crear-vm-lab-debian.md`.
 
-## Qué se rompió
+## Qué se falló
 - El primer intento de `virt-install` falló: QEMU corre como usuario
   `libvirt-qemu`, que no tenía permiso para leer la ISO guardada en
   `~/Descargas` (error "Permission denied" al abrir el blockdev).
@@ -18,7 +18,7 @@ a los grupos `libvirt` y `kvm`, descargué la ISO netinst, y armé la VM con
   correspondía a la VM (una IP vieja/residual de una lease de DHCP), lo que
   generó confusión al intentar conectarse por SSH ("No route to host").
 
-## Cómo lo arreglé
+## Cómo se arregló
 - Moví la ISO a `/var/lib/libvirt/images/` (el pool por defecto de libvirt)
   para que el usuario `libvirt-qemu` pudiera leerla.
 - Descarté la VM colgada (`virsh destroy` + `virsh undefine --remove-all-storage`)
@@ -29,7 +29,7 @@ a los grupos `libvirt` y `kvm`, descargué la ISO netinst, y armé la VM con
   usé `ip neigh show dev virbr0` y busqué la dirección marcada `REACHABLE`
   junto con la MAC de la VM.
 
-## Pendiente / dudas
+## Pendiente 
 - Por qué `domifaddr` mostró una IP incorrecta/residual en más de un intento
   (posible relación con leases viejas de dnsmasq que no se limpian solas).
 - Falta actualizar el sistema recién instalado
