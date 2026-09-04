@@ -6,7 +6,7 @@ a los grupos `libvirt` y `kvm`, descargué la ISO netinst, y armé la VM con
 `virt-install`. El procedimiento completo queda documentado en
 `runbooks/crear-vm-lab-debian.md`.
 
-## Qué se falló
+## Qué falló
 - El primer intento de `virt-install` falló: QEMU corre como usuario
   `libvirt-qemu`, que no tenía permiso para leer la ISO guardada en
   `~/Descargas` (error "Permission denied" al abrir el blockdev).
